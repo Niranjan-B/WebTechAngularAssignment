@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AngularJs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+        <script src="controller.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body ng-app="webApp" ng-controller="controlNinja">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="page-header" class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3" style="margin-top: 1em;">
+                            <strong id="fb-search-text">FB Search</strong>
+                        </div>
+                        <form novalidate>
+                            <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top: 0.5em;">
+                                <div class="input-group">
+                                    <input data-toggle="tooltip"  tooltip = "Please type a keyword" type="text" tooltip-placement="bottom"
+                                    class="form-control" placeholder="Type Something...." id="searchQueryInput" ng-model="query" 
+                                    tooltip-enable="isTooltipOpen" required> 
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" id="search-fb-button" ng-click="submit()">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-xs-3 col-sm-3 col-md-3" style="margin-top: 0.5em;">
+                            <button type="button" class="btn btn-default" style="border: 1px solid #337ab5; background: white;" >
+                                <span style="color: #337ab5">Clear</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- tab bar layout-->
+            <!-- nv tab -->
+            <div class="row" id="tabs">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a href="#user" data-toggle="tab">Users</a></li>
+                    <li><a href="#page" data-toggle="tab">Pages</a></li>
+                    <li><a href="#event" data-toggle="tab">Events</a></li>
+                    <li><a href="#place" data-toggle="tab">Places</a></li>
+                    <li><a href="#group" data-toggle="tab">Groups</a></li>
+                    <li><a href="#favorite" data-toggle="tab">Favorites</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <hr style="border: 1px solid #337ab5; margin-top: 0px;">
+            </div>   
+            <!-- Tab content here-->
+            <div class="row">
+                <div class="tab-content">
+                    <div id="user" class="tab-pane active">
+                        I'm  a user
+                    </div>
+                    <div id="page" class="tab-pane">
+                        I'm a page
+                    </div>
+                    <div id="event" class="tab-pane">
+                        I'm an event
+                    </div>
+                    <div id="place" class="tab-pane">
+                        I'm a place
+                    </div>
+                    <div id="group" class="tab-pane">
+                        I'm a group
+                    </div>
+                    <div id="favorite" class="tab-pane">
+                        I'm a fav
+                    </div>
+                </div>     
+            </div> 
+        </div>
+    </body>
+</html>
