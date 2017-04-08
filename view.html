@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="tab-content">
                     <div id="user" class="tab-pane active" style="margin-left: 20px; margin-right: 20px;">
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-hide="hideUserTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -91,16 +91,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div class="col-xs-3 col-sm-3 col-md-4"> Dummy div's</div>-->
-                            <!--<div class="col-xs-6 col-sm-6 col-md-3">-->
-                                <!--<button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" (click)="fireNextPageLocationsTab()" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
-                            </div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-5"> Dummy div's' </div>-->
+                            <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;" ng-hide="hidePreviousButtonUsersTab" ng-click="onPreviousButtonClickedUsersPage()">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;" ng-hide="hideNextButtonUsersTab" ng-click="onNextButtonClickedUsersPage()" >Next</button>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
                     <div id="page" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-hide="hidePagesTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -129,16 +129,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div class="col-xs-3 col-sm-3 col-md-4"> Dummy div's</div>-->
-                            <!--<div class="col-xs-6 col-sm-6 col-md-3">-->
-                                <!--<button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" (click)="fireNextPageLocationsTab()" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
-                            </div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-5"> Dummy div's' </div>-->
+                            <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
                     <div id="event" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-hide="hideEventsTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -167,16 +167,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div class="col-xs-3 col-sm-3 col-md-4"> Dummy div's</div>-->
-                            <!--<div class="col-xs-6 col-sm-6 col-md-3">-->
-                                <!--<button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" (click)="fireNextPageLocationsTab()" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
-                            </div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-5"> Dummy div's' </div>-->
+                            <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
                     <div id="place" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-hide="hidePlacesTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -205,16 +205,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div class="col-xs-3 col-sm-3 col-md-4"> Dummy div's</div>-->
-                            <!--<div class="col-xs-6 col-sm-6 col-md-3">-->
-                                <!--<button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" (click)="fireNextPageLocationsTab()" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
-                            </div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-5"> Dummy div's' </div>-->
+                            <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
                     <div id="group" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-hide="hideGroupsTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -243,12 +243,12 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div class="col-xs-3 col-sm-3 col-md-4"> Dummy div's</div>-->
-                            <!--<div class="col-xs-6 col-sm-6 col-md-3">-->
-                                <!--<button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
+                            <div class="col-xs-3 col-sm-3 col-md-4"> <!--Dummy div's--></div>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                            <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
                                 <button class="btn btn-default align-middle" type="button" (click)="fireNextPageLocationsTab()" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
-                            </div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-5"> Dummy div's' </div>-->
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-5"> <!--Dummy div's'--> </div>
                         </div>
                     </div>
                     <div id="favorite" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
