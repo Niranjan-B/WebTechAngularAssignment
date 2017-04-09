@@ -27,3 +27,59 @@
     height: 3em;
     border-radius: 25px;
 }
+.row.main-content.ng-hide-remove {
+    -webkit-animation:1.0s showm;
+    animation:1.0s showm;
+}
+@keyframes showm {
+  0% {
+    opacity:0;
+    transform: translate3d(100%,0px,0px);
+  }
+  100% { 
+    opacity:1;
+    transform: 
+      translate3d(0%,0px,0px);
+  }
+}
+
+@-webkit-keyframes showm {
+  0% {
+    opacity:0;
+    transform: translate3d(100%,0px,0px);
+  }
+  100% { 
+    opacity:1;
+    transform: 
+      translate3d(0%,0px,0px);
+  }
+}
+
+.row.detail-content.ng-hide-remove {
+    -webkit-animation:1.0s show;
+    animation:1.0s show;
+}
+
+@keyframes show {
+  0% {
+    opacity:0;
+    transform: translate3d(-100%,0px,0px);
+  }
+  100% { 
+    opacity:1;
+    transform: 
+      translate3d(0%,0px,0px);
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity:0;
+    transform: translate3d(-100%,0px,0px);
+  }
+  100% { 
+    opacity:1;
+    transform: 
+      translate3d(0%,0px,0px);
+  }
+}

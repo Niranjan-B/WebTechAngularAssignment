@@ -438,8 +438,18 @@ app.controller('controlNinja', function($scope, $http) {
         $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + idDetail, 
                 {headers:{ 'Access-Control-Allow-Origin':'*' }})
                 .then(function(response){
-                    $scope.albumDetails = response.data.albums.data;
-                    $scope.postsDetails = response.data.posts.data;
+                    if (response.data.albums === undefined) {
+                        $scope.albumDetails = undefined;    
+                    } else {
+                        $scope.albumDetails = response.data.albums.data;
+                    }
+                    
+                    if (response.data.posts === undefined) {
+                        $scope.postsDetails = undefined;    
+                    } else {
+                        $scope.postsDetails = response.data.posts.data;
+                    }
+
                     $scope.name = response.data.name;
                     $scope.pictureUrl = response.data.picture.data.url;
                 }, function(error){
