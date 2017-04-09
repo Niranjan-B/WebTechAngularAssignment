@@ -462,7 +462,15 @@ app.controller('controlNinja', function($scope, $http) {
         swapHiddenViews();
     }
     
-    // -------------------------------------------------- save clicked blob -------------------------------------------------------
+    // -------------------------------------------------- CRUD of clicked blob -------------------------------------------------------
+    function refreshLocalStorage() {
+        var jsonData = [];
+        for (var i=0; i<localStorage.length; i++) {
+            jsonData.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        }
+        return jsonData;
+    }
+    
     $scope.saveToUsersStorage = function(object) {
         var blobToStore = {
             type: "users",
@@ -471,7 +479,7 @@ app.controller('controlNinja', function($scope, $http) {
             picUrl: object.user.picture.data.url
         };
         localStorage.setItem(object.user.id, JSON.stringify(blobToStore));
-        console.log(localStorage.getItem(object.user.id));
+        $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToPagesStorage = function(object) {
         var blobToStore = {
@@ -481,7 +489,7 @@ app.controller('controlNinja', function($scope, $http) {
             picUrl: object.page.picture.data.url
         };
         localStorage.setItem(object.page.id, JSON.stringify(blobToStore));
-        console.log(localStorage.getItem(object.page.id));
+        $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToEventsStorage = function(object) {
         var blobToStore = {
@@ -491,7 +499,7 @@ app.controller('controlNinja', function($scope, $http) {
             picUrl: object.event.picture.data.url
         };
         localStorage.setItem(object.event.id, JSON.stringify(blobToStore));
-        console.log(localStorage.getItem(object.event.id));
+        $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToPlacesStorage = function(object) {
         var blobToStore = {
@@ -501,7 +509,7 @@ app.controller('controlNinja', function($scope, $http) {
             picUrl: object.place.picture.data.url
         };
         localStorage.setItem(object.place.id, JSON.stringify(blobToStore));
-        console.log(localStorage.getItem(object.place.id));
+        $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToGroupsStorage = function(object) {
         var blobToStore = {
@@ -511,7 +519,14 @@ app.controller('controlNinja', function($scope, $http) {
             picUrl: object.group.picture.data.url
         };
         localStorage.setItem(object.group.id, JSON.stringify(blobToStore));
-        console.log(localStorage.getItem(object.group.id));
+        $scope.localStoredData = refreshLocalStorage();
+    }
+    $scope.getAllItems = function() {
+        $scope.localStoredData = refreshLocalStorage();
+    }
+    $scope.deleteClickedItem = function(obj) {
+        localStorage.removeItem(obj.localBlob.id);
+        $scope.localStoredData = refreshLocalStorage();
     }
 
 
