@@ -34,6 +34,12 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hidePreviousButtonPagesTab = true;
     var nextPageUrlPagesTab;
     var previousPageUrlPagesTab;
+
+    // variables for events tabs
+    $scope.hideNextButtonEventsTab = true;
+    $scope.hidePreviousButtonEventsTab = true;
+    var nextPageUrlEventsTab;
+    var previousPageUrlEventsTab;
     
     $scope.submit = function() {
         if ($scope.hideTabContent) {
@@ -93,6 +99,19 @@ app.controller('controlNinja', function($scope, $http) {
                  .then(function (response) {
                     $scope.hideEventsTable = false;
                     $scope.events = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlEventsTab = response.data.paging.next;
+                        $scope.hideNextButtonEventsTab = false;
+                    } else {
+                        $scope.hideNextButtonEventsTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlEventsTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonEventsTab = false;
+                    } else {
+                        $scope.hidePreviousButtonEventsTab = true;
+                    }
                  }, function (error){
                     console.log(error);
                  });
@@ -213,6 +232,53 @@ app.controller('controlNinja', function($scope, $http) {
                     console.log(error);
                  });   
         }
+    
+    // -------------------------------------------- functions for events tab --------------------------------------------
+       $scope.onNextButtonClickedEventsPage = function() {
+        $http.get(nextPageUrlEventsTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hideEventsTable = false;
+                    $scope.events = response.data.data;
+
+                    if (response.data.paging !== undefined && response.data.paging.next != null) {
+                        nextPageUrlEventsTab = response.data.paging.next;
+                        $scope.hideNextButtonEventsTab = false;
+                    } else {
+                        $scope.hideNextButtonEventsTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlEventsTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonEventsTab = false;
+                    } else {
+                        $scope.hidePreviousButtonEventsTab = true;
+                    }
+                 }, function (error){
+                    console.log(error);
+                 });   
+        }
+        $scope.onPreviousButtonClickedEventsPage = function() {
+        $http.get(previousPageUrlEventsTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hideEventsTable = false;
+                    $scope.events = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlEventsTab = response.data.paging.next;
+                        $scope.hideNextButtonEventsTab = false;
+                    } else {
+                        $scope.hideNextButtonEventsTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlEventsTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonEventsTab = false;
+                    } else {
+                        $scope.hidePreviousButtonEventsTab = true;
+                    }
+
+                 }, function (error){
+                    console.log(error);
+                 });   
+        } 
 
 
     function swapHiddenViews() {
@@ -220,15 +286,15 @@ app.controller('controlNinja', function($scope, $http) {
         $scope.hideDetailContent = !$scope.hideDetailContent;
     }
 
-    // --------------------------------------------------- user detail ----------------------------------------------------
+    // --------------------------------------------------- detail's ----------------------------------------------------
     $scope.showDetailsOfUsers = function(id) {
         if (id.user !== undefined) {
             idDetail = id.user.id;
         } else if (id.page !== undefined) {
             idDetail = id.page.id;
+        } else if (id.event !== undefined) {
+            idDetail = id.event.id;
         }
-        
-        
         
         swapHiddenViews();
         
