@@ -40,6 +40,12 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hidePreviousButtonEventsTab = true;
     var nextPageUrlEventsTab;
     var previousPageUrlEventsTab;
+
+    // variables for places tab
+    $scope.hideNextButtonPlacesTab = true;
+    $scope.hidePreviousButtonPlacesTab = true;
+    var nextPageUrlPlacesTab;
+    var previousPageUrlPlacesTab;
     
     $scope.submit = function() {
         if ($scope.hideTabContent) {
@@ -120,6 +126,19 @@ app.controller('controlNinja', function($scope, $http) {
                  .then(function (response) {
                     $scope.hidePlacesTable = false;
                     $scope.places = response.data.data;
+
+                    if (response.data.paging !== undefined  && response.data.paging.next != null) {
+                        nextPageUrlPlacesTab = response.data.paging.next;
+                        $scope.hideNextButtonPlacesTab = false;
+                    } else {
+                        $scope.hideNextButtonPlacesTab = true;
+                    }
+                    if (response.data.paging !== undefined && response.data.paging.previous != null) {
+                        previousPageUrlPlacesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPlacesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPlacesTab = true;
+                    }
                  }, function (error){
                     console.log(error);
                  });
@@ -234,7 +253,54 @@ app.controller('controlNinja', function($scope, $http) {
         }
     
     // -------------------------------------------- functions for events tab --------------------------------------------
-       $scope.onNextButtonClickedEventsPage = function() {
+       $scope.onNextButtonClickedPlacesPage = function() {
+        $http.get(nextPageUrlPlacesTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hidePlacesTable = false;
+                    $scope.places = response.data.data;
+
+                    if (response.data.paging !== undefined && response.data.paging.next != null) {
+                        nextPageUrlPlacesTab = response.data.paging.next;
+                        $scope.hideNextButtonPlacesTab = false;
+                    } else {
+                        $scope.hideNextButtonPlacesTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlPlacesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPlacesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPlacesTab = true;
+                    }
+                 }, function (error){
+                    console.log(error);
+                 });   
+        }
+        $scope.onPreviousButtonClickedPlacesPage = function() {
+        $http.get(previousPageUrlPlacesTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hidePlacesTable = false;
+                    $scope.places = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlPlacesTab = response.data.paging.next;
+                        $scope.hideNextButtonPlacesTab = false;
+                    } else {
+                        $scope.hideNextButtonPlacesTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlPlacesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPlacesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPlacesTab = true;
+                    }
+
+                 }, function (error){
+                    console.log(error);
+                 });   
+        }
+
+    // ------------------------------------------ functions for places tab -------------------------------------------
+     $scope.onNextButtonClickedEventsPage = function() {
         $http.get(nextPageUrlEventsTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
                  .then(function (response) {
                     $scope.hideEventsTable = false;
@@ -278,7 +344,7 @@ app.controller('controlNinja', function($scope, $http) {
                  }, function (error){
                     console.log(error);
                  });   
-        } 
+        }
 
 
     function swapHiddenViews() {
@@ -294,6 +360,8 @@ app.controller('controlNinja', function($scope, $http) {
             idDetail = id.page.id;
         } else if (id.event !== undefined) {
             idDetail = id.event.id;
+        } else if (id.place !== undefined) {
+            idDetail = id.place.id;
         }
         
         swapHiddenViews();

@@ -179,6 +179,7 @@
                             <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
+                    <!-- /////////////////////////////////////////////  Tab for places /////////////////////////////////// -->
                     <div id="place" class="tab-pane" style="margin-left: 20px; margin-right: 20px;">
                         <div class="table-responsive" ng-hide="hidePlacesTable">
                             <table class="table table-hover">
@@ -202,7 +203,7 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;">
+                                            <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="showDetailsOfUsers(this)">
                                                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="width: 1em; height: 1em;"></span>
                                             </button>
                                         </td>
@@ -211,8 +212,8 @@
                             </table>
                             <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
                             <div class="col-xs-6 col-sm-6 col-md-3">
-                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;">Next</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;" ng-hide="hidePreviousButtonPlacesTab" ng-click="onPreviousButtonClickedPlacesPage()">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;" ng-hide="hideNextButtonPlacesTab" ng-click="onNextButtonClickedPlacesPage()">Next</button>
                             </div>
                             <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
                         </div>
