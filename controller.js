@@ -162,6 +162,8 @@ app.controller('controlNinja', function($scope, $http) {
                 .then(function(response){
                     $scope.albumDetails = response.data.albums.data;
                     $scope.postsDetails = response.data.posts.data;
+                    $scope.name = response.data.name;
+                    $scope.pictureUrl = response.data.picture.data.url;
                 }, function(error){
                     console.log(error);
                 });

@@ -296,10 +296,10 @@
                         <div class="panel-heading">Posts</div>
                         <div ng-repeat="post in postsDetails | orderBy:'created_time':true" ng-if="post.message !== undefined" style="margin-left: 1em; margin-right:1em; margin-top:1em; border: 1px solid lightgrey; border-radius:3px; padding:10px;">
                             <span>
-                                <img style="width:50px; height:50px" src="fwefw"/>
+                                <img style="width:50px; height:50px" src="{{ pictureUrl }}"/>
                             </span>
                             <span style="display: inline-block;">
-                                <div><b>SpaceX</b></div>
+                                <div><b>{{name}}</b></div>
                                 <div>{{post.created_time | date:'yyyy-MM-dd HH:mm:ss'}}</div>
                             </span>
                             <br><br>
