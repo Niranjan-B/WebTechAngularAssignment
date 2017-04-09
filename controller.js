@@ -461,5 +461,58 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.goBack = function() {
         swapHiddenViews();
     }
+    
+    // -------------------------------------------------- save clicked blob -------------------------------------------------------
+    $scope.saveToUsersStorage = function(object) {
+        var blobToStore = {
+            type: "users",
+            id: object.user.id,
+            name: object.user.name,
+            picUrl: object.user.picture.data.url
+        };
+        localStorage.setItem(object.user.id, JSON.stringify(blobToStore));
+        console.log(localStorage.getItem(object.user.id));
+    }
+    $scope.saveToPagesStorage = function(object) {
+        var blobToStore = {
+            type: "pages",
+            id: object.page.id,
+            name: object.page.name,
+            picUrl: object.page.picture.data.url
+        };
+        localStorage.setItem(object.page.id, JSON.stringify(blobToStore));
+        console.log(localStorage.getItem(object.page.id));
+    }
+    $scope.saveToEventsStorage = function(object) {
+        var blobToStore = {
+            type: "events",
+            id: object.event.id,
+            name: object.event.name,
+            picUrl: object.event.picture.data.url
+        };
+        localStorage.setItem(object.event.id, JSON.stringify(blobToStore));
+        console.log(localStorage.getItem(object.event.id));
+    }
+    $scope.saveToPlacesStorage = function(object) {
+        var blobToStore = {
+            type: "places",
+            id: object.place.id,
+            name: object.place.name,
+            picUrl: object.place.picture.data.url
+        };
+        localStorage.setItem(object.place.id, JSON.stringify(blobToStore));
+        console.log(localStorage.getItem(object.place.id));
+    }
+    $scope.saveToGroupsStorage = function(object) {
+        var blobToStore = {
+            type: "groups",
+            id: object.group.id,
+            name: object.group.name,
+            picUrl: object.group.picture.data.url
+        };
+        localStorage.setItem(object.group.id, JSON.stringify(blobToStore));
+        console.log(localStorage.getItem(object.group.id));
+    }
+
 
 });
