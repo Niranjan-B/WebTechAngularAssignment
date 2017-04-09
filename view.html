@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-sanitize.js"></script>
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
         <script src="controller.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body ng-app="webApp" ng-controller="controlNinja">
@@ -59,7 +60,7 @@
                 <hr style="border: 1px solid #337ab5; margin-top: 0px;">
             </div>   
             <!-- Tab content here-->
-            <div class="row">
+            <div class="row" ng-hide="hideTabContent">
                 <div class="tab-content">
                     <div id="user" class="tab-pane active" style="margin-left: 20px; margin-right: 20px;">
                         <div class="table-responsive" ng-hide="hideUserTable">
@@ -84,7 +85,7 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;">
+                                            <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="showDetailsOfUsers(this)">
                                                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="width: 1em; height: 1em;"></span>
                                             </button>
                                         </td>
@@ -255,6 +256,45 @@
                         I'm a fav
                     </div>
                 </div>     
+            </div>
+            <!-- Detail view -->
+            <div ng-hide="hideDetailContent" class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2" >
+                    <button class="btn btn-default" style="background: white;" ng-click="goBack()">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-8" >
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2" >
+                    <button class="btn btn-default" style="float: right; margin-left: 10px; background: white;">
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                    </button>
+                    <button class="btn btn-default" style="float: right; background: white;">
+                        <span class="glyphicon glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                    </button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:1.5em;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Albums</div>
+                        <div class="panel-body">
+                            <uib-accordion close-others="true">
+                                <div uib-accordion-group class="panel-default" heading="{{detail.name}}" ng-repeat="detail in albumDetails">
+                                    <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
+                                    <br><br>
+                                    <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                </div>
+                            </uib-accordion>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:1.5em;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Posts</div>
+                        <div class="panel-body">Panel content</div>
+                    </div>
+                </div>
             </div> 
         </div>
     </body>

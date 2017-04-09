@@ -1,5 +1,10 @@
-var app = angular.module("webApp", ['ui.bootstrap']);
+var app = angular.module("webApp", ['ngSanitize','ngAnimate','ui.bootstrap']);
 app.controller('controlNinja', function($scope, $http) {
+
+    // hide tab content or detail content
+    $scope.hideTabContent = false;
+    $scope.hideDetailContent = true;
+    var idDetail;
 
     // change the way tooltip looks later on
     $scope.isTooltipOpen = false;
@@ -11,6 +16,7 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hideGroupsTable = true;
     $scope.hideFavoritesTable = true;
 
+    // variables related to users tab
     $scope.hideNextButtonUsersTab = true;
     $scope.hidePreviousButtonUsersTab = true;
 
@@ -18,6 +24,11 @@ app.controller('controlNinja', function($scope, $http) {
     var previousPageUrlUsersTab;
     
     $scope.submit = function() {
+        if ($scope.hideTabContent) {
+            $scope.hideTabContent = false;
+            $scope.hideDetailContent = true;
+        }
+
         if ($scope.query) {
             $scope.isTooltipOpen = false;
 
@@ -128,6 +139,30 @@ app.controller('controlNinja', function($scope, $http) {
                  }, function (error){
                     console.log(error);
                  });   
+    }
+    function swapHiddenViews() {
+        $scope.hideTabContent = !$scope.hideTabContent;
+        $scope.hideDetailContent = !$scope.hideDetailContent;
+    }
+
+    $scope.showDetailsOfUsers = function(id) {
+        idDetail = id.user.id;
+        swapHiddenViews();
+        
+        // make http request
+        $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + 353851465130, 
+                {headers:{ 'Access-Control-Allow-Origin':'*' }})
+                .then(function(response){
+                    $scope.albumDetails = response.data.albums.data;
+                    $scope.postsDetails = response.data.posts.data;
+                }, function(error){
+                    console.log(error);
+                });
+
+    }
+
+    $scope.goBack = function() {
+        swapHiddenViews();
     }
 
 });
