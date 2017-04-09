@@ -157,7 +157,7 @@ app.controller('controlNinja', function($scope, $http) {
         swapHiddenViews();
         
         // make http request
-        $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + 353851465130, 
+        $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + idDetail, 
                 {headers:{ 'Access-Control-Allow-Origin':'*' }})
                 .then(function(response){
                     $scope.albumDetails = response.data.albums.data;
