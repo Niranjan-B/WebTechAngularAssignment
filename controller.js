@@ -6,6 +6,13 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hideDetailContent = true;
     var idDetail;
 
+    $scope.changeState = function() {
+        if ($scope.hideTabContent) {
+            $scope.hideTabContent = false;
+            $scope.hideDetailContent = true;
+        }   
+    }
+
     // change the way tooltip looks later on
     $scope.isTooltipOpen = false;
 
