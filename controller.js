@@ -26,9 +26,14 @@ app.controller('controlNinja', function($scope, $http) {
     // variables related to users tab
     $scope.hideNextButtonUsersTab = true;
     $scope.hidePreviousButtonUsersTab = true;
-
     var nextPageUrlUsersTab;
     var previousPageUrlUsersTab;
+
+    // variables related to pages tab
+    $scope.hideNextButtonPagesTab = true;
+    $scope.hidePreviousButtonPagesTab = true;
+    var nextPageUrlPagesTab;
+    var previousPageUrlPagesTab;
     
     $scope.submit = function() {
         if ($scope.hideTabContent) {
@@ -67,6 +72,19 @@ app.controller('controlNinja', function($scope, $http) {
                  .then(function (response) {
                     $scope.hidePagesTable = false;
                     $scope.pages = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlPagesTab = response.data.paging.next;
+                        $scope.hideNextButtonPagesTab = false;
+                    } else {
+                        $scope.hideNextButtonPagesTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlPagesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPagesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPagesTab = true;
+                    }
                  }, function (error){
                     console.log(error);
                  });
@@ -101,6 +119,7 @@ app.controller('controlNinja', function($scope, $http) {
         }
     }
 
+    //-------------------------------------------- users tab functions ------------------------------------------------------------
     $scope.onNextButtonClickedUsersPage = function() {
         $http.get(nextPageUrlUsersTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
                  .then(function (response) {
@@ -147,13 +166,70 @@ app.controller('controlNinja', function($scope, $http) {
                     console.log(error);
                  });   
     }
+
+    // ----------------------------------------pages tab functions ------------------------------------------------------------
+        $scope.onNextButtonClickedPagesPage = function() {
+        $http.get(nextPageUrlPagesTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hidePagesTable = false;
+                    $scope.pages = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlPagesTab = response.data.paging.next;
+                        $scope.hideNextButtonPagesTab = false;
+                    } else {
+                        $scope.hideNextButtonPagesTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlPagesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPagesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPagesTab = true;
+                    }
+                 }, function (error){
+                    console.log(error);
+                 });   
+        }
+        $scope.onPreviousButtonClickedPagesPage = function() {
+        $http.get(previousPageUrlPagesTab , { headers: { 'Access-Control-Allow-Origin':'*' } })
+                 .then(function (response) {
+                    $scope.hidePagesTable = false;
+                    $scope.pages = response.data.data;
+
+                    if (response.data.paging.next != null) {
+                        nextPageUrlPagesTab = response.data.paging.next;
+                        $scope.hideNextButtonPagesTab = false;
+                    } else {
+                        $scope.hideNextButtonPagesTab = true;
+                    }
+                    if (response.data.paging.previous != null) {
+                        previousPageUrlPagesTab = response.data.paging.previous;
+                        $scope.hidePreviousButtonPagesTab = false;
+                    } else {
+                        $scope.hidePreviousButtonPagesTab = true;
+                    }
+
+                 }, function (error){
+                    console.log(error);
+                 });   
+        }
+
+
     function swapHiddenViews() {
         $scope.hideTabContent = !$scope.hideTabContent;
         $scope.hideDetailContent = !$scope.hideDetailContent;
     }
 
+    // --------------------------------------------------- user detail ----------------------------------------------------
     $scope.showDetailsOfUsers = function(id) {
-        idDetail = id.user.id;
+        if (id.user !== undefined) {
+            idDetail = id.user.id;
+        } else if (id.page !== undefined) {
+            idDetail = id.page.id;
+        }
+        
+        
+        
         swapHiddenViews();
         
         // make http request
