@@ -316,8 +316,9 @@
                     <button class="btn btn-default" style="float: right; margin-left: 10px; background: white;">
                         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="width: 1em; height: 1em; "></span>
                     </button>
-                    <button class="btn btn-default" style="float: right; background: white;">
-                        <span class="glyphicon glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                    <button class="btn btn-default" style="float: right; background: white;" ng-click="addRemoveFromGeneralStoreDetail()">
+                        <span ng-hide="isIdPresentInGeneralStore()" class="glyphicon glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em;"></span>
+                        <span ng-if="isIdPresentInGeneralStore()" class="glyphicon glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                     </button>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:1.5em;">

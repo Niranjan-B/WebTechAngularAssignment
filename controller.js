@@ -5,6 +5,9 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hideTabContent = false;
     $scope.hideDetailContent = true;
     var idDetail;
+    var idDetailType;
+    var idDetailName;
+    var idDetailPicURL;
 
     $scope.changeState = function() {
         if ($scope.hideTabContent) {
@@ -422,14 +425,19 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.showDetailsOfUsers = function(id) {
         if (id.user !== undefined) {
             idDetail = id.user.id;
+            idDetailType = "users";
         } else if (id.page !== undefined) {
             idDetail = id.page.id;
+            idDetailType = "pages";
         } else if (id.event !== undefined) {
             idDetail = id.event.id;
+            idDetailType = "events";
         } else if (id.place !== undefined) {
             idDetail = id.place.id;
+            idDetailType = "places";
         } else if (id.group !== undefined) {
             idDetail = id.group.id;
+            idDetailType = "groups";
         } else if (id.localBlob !== undefined) {
             idDetail = id.localBlob.id;
         }
@@ -453,7 +461,9 @@ app.controller('controlNinja', function($scope, $http) {
                     }
 
                     $scope.name = response.data.name;
+                    idDetailName = response.data.name;
                     $scope.pictureUrl = response.data.picture.data.url;
+                    idDetailPicURL = response.data.picture.data.url;
                 }, function(error){
                     console.log(error);
                 });
@@ -542,6 +552,7 @@ app.controller('controlNinja', function($scope, $http) {
         }
         $scope.localStoredData = refreshLocalStorage();
     }
+    
     $scope.getAllItems = function() {
         $scope.localStoredData = refreshLocalStorage();
     }
@@ -565,5 +576,25 @@ app.controller('controlNinja', function($scope, $http) {
     }
     $scope.isIdPresentInGroupsStore = function(object) {
         return localStorage.getItem(object.group.id) === null ? false : true;
+    }
+
+    // function to check if the detail view is present in the local storage
+    $scope.isIdPresentInGeneralStore = function() {
+        return localStorage.getItem(idDetail) === null ? false : true;
+    }
+    // function to add/remove from local store for details page
+    $scope.addRemoveFromGeneralStoreDetail = function() {
+        if (localStorage.getItem(idDetail) !== null) {
+            localStorage.removeItem(idDetail);
+        } else {
+            var blobToStore = {
+                type: idDetailType,
+                id: idDetail,
+                name: idDetailName,
+                picUrl: idDetailPicURL
+            };
+            localStorage.setItem(idDetail, JSON.stringify(blobToStore));
+        }
+        $scope.localStoredData = refreshLocalStorage();
     }
 });
