@@ -4,6 +4,24 @@
         <meta charset="utf-8">
         <title>AngularJs</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '1679160999051021',
+                    xfbml      : true,
+                    version    : 'v2.8'
+                });
+                FB.AppEvents.logPageView();
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-sanitize.js"></script>
@@ -318,7 +336,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-8" >
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-2" >
-                    <button class="btn btn-default" style="float: right; margin-left: 10px; background: white;">
+                    <button class="btn btn-default" style="float: right; margin-left: 10px; background: white;" ng-click="postToFB()">
                         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="width: 1em; height: 1em; "></span>
                     </button>
                     <button class="btn btn-default" style="float: right; background: white;" ng-click="addRemoveFromGeneralStoreDetail()">

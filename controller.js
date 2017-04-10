@@ -8,6 +8,7 @@ app.controller('controlNinja', function($scope, $http) {
     var idDetailType;
     var idDetailName;
     var idDetailPicURL;
+    var idDetailHighResImage;
 
     $scope.hideProgessBar = true;
     $scope.hideProgressBarAlbums = false;
@@ -466,6 +467,12 @@ app.controller('controlNinja', function($scope, $http) {
                         $scope.albumDetails = undefined;    
                     } else {
                         $scope.albumDetails = response.data.albums.data;
+                        for (var i=0; i<response.data.albums.data.length; i++) {
+                            if (response.data.albums.data[i].name === "Profile Pictures") {
+                                //idDetailHighResImage = response.data.albums.data[i].images[0].source;
+                                idDetailHighResImage = response.data.albums.data[i].photos.data[0].images[0].source;    
+                            }
+                        }
                     }
                     
                     if (response.data.posts === undefined) {
@@ -611,4 +618,36 @@ app.controller('controlNinja', function($scope, $http) {
         }
         $scope.localStoredData = refreshLocalStorage();
     }
+
+    $scope.postToFB = function() {
+
+        FB.ui({
+            app_id:'1679160999051021',
+            method: 'feed',
+            display: 'dialog',  
+            link: "https://developers.facebook.com/docs/",
+            picture: idDetailHighResImage,
+            name: idDetailName,
+            caption: "FB SEARCH FROM USC CSCI 571",
+        }, function(response){
+            if (response && !response.error_message) 
+                alert('Posting completed.');
+            else 
+                alert('Error while posting.');
+        });
+
+
+        // FB.ui({
+        //     method: 'feed',
+        //     display: 'iframe',
+        //     link: 'https://developers.facebook.com/docs/',
+        //     caption: 'FB SEARCH FROM USC CSCI571'
+        // }, function(response) {
+        //     if (response && !response.error_message) {
+        //         alert('Posting completed.');
+        //     } else {
+        //         alert('Error while posting.');
+        //     }
+        // });
+    }  
 });
