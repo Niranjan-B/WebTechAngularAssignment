@@ -82,7 +82,8 @@
                                         <td style="padding-top: 1.3em;">{{ user.name }}</td>
                                         <td>
                                             <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="saveToUsersStorage(this)">
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-hide="isIdPresentInUsersStore(this)" class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-if="isIdPresentInUsersStore(this)" class="glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold; "></span>
                                             </button>
                                         </td>
                                         <td>
@@ -121,7 +122,8 @@
                                         <td style="padding-top: 1.3em;">{{ page.name }}</td>
                                         <td>
                                             <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="saveToPagesStorage(this)" >
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-hide="isIdPresentInPagesStore(this)" class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-if="isIdPresentInPagesStore(this)" class="glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                                             </button>
                                         </td>
                                         <td>
@@ -160,7 +162,8 @@
                                         <td style="padding-top: 1.3em;">{{ event.name }}</td>
                                         <td>
                                             <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="saveToEventsStorage(this)">
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-hide="isIdPresentInEventsStore(this)" class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-if="isIdPresentInEventsStore(this)" class="glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                                             </button>
                                         </td>
                                         <td>
@@ -199,7 +202,8 @@
                                         <td style="padding-top: 1.3em;">{{ place.name }}</td>
                                         <td>
                                             <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="saveToPlacesStorage(this)">
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-hide="isIdPresentInPlacesStore(this)" class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-if="isIdPresentInPlacesStore(this)" class="glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                                             </button>
                                         </td>
                                         <td>
@@ -238,7 +242,8 @@
                                         <td style="padding-top: 1.3em;">{{ group.name }}</td>
                                         <td>
                                             <button class="btn btn-default favorite-button" type="button" style="margin-top: 0.3em;" ng-click="saveToGroupsStorage(this)">
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-hide="isIdPresentInGroupsStore(this)" class="glyphicon glyphicon-star-empty" aria-hidden="true" style="width: 1em; height: 1em; "></span>
+                                                <span ng-if="isIdPresentInGroupsStore(this)" class="glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                                             </button>
                                         </td>
                                         <td>

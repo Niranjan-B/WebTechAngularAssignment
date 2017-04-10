@@ -457,7 +457,6 @@ app.controller('controlNinja', function($scope, $http) {
                 }, function(error){
                     console.log(error);
                 });
-
     }
 
     $scope.goBack = function() {
@@ -474,53 +473,73 @@ app.controller('controlNinja', function($scope, $http) {
     }
     
     $scope.saveToUsersStorage = function(object) {
-        var blobToStore = {
-            type: "users",
-            id: object.user.id,
-            name: object.user.name,
-            picUrl: object.user.picture.data.url
-        };
-        localStorage.setItem(object.user.id, JSON.stringify(blobToStore));
+        if (localStorage.getItem(object.user.id) !== null) {
+            localStorage.removeItem(object.user.id);
+        } else {
+            var blobToStore = {
+                type: "users",
+                id: object.user.id,
+                name: object.user.name,
+                picUrl: object.user.picture.data.url
+            };
+            localStorage.setItem(object.user.id, JSON.stringify(blobToStore));
+        }
         $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToPagesStorage = function(object) {
-        var blobToStore = {
-            type: "pages",
-            id: object.page.id,
-            name: object.page.name,
-            picUrl: object.page.picture.data.url
-        };
-        localStorage.setItem(object.page.id, JSON.stringify(blobToStore));
+        if (localStorage.getItem(object.page.id) !== null) {
+            localStorage.removeItem(object.page.id);
+        } else {
+            var blobToStore = {
+                type: "pages",
+                id: object.page.id,
+                name: object.page.name,
+                picUrl: object.page.picture.data.url
+            };
+            localStorage.setItem(object.page.id, JSON.stringify(blobToStore));
+        }
         $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToEventsStorage = function(object) {
-        var blobToStore = {
-            type: "events",
-            id: object.event.id,
-            name: object.event.name,
-            picUrl: object.event.picture.data.url
-        };
-        localStorage.setItem(object.event.id, JSON.stringify(blobToStore));
+        if (localStorage.getItem(object.event.id) !== null) {
+            localStorage.removeItem(object.event.id);
+        } else {
+            var blobToStore = {
+                type: "events",
+                id: object.event.id,
+                name: object.event.name,
+                picUrl: object.event.picture.data.url
+            };
+            localStorage.setItem(object.event.id, JSON.stringify(blobToStore));
+        }
         $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToPlacesStorage = function(object) {
-        var blobToStore = {
-            type: "places",
-            id: object.place.id,
-            name: object.place.name,
-            picUrl: object.place.picture.data.url
-        };
-        localStorage.setItem(object.place.id, JSON.stringify(blobToStore));
+        if (localStorage.getItem(object.place.id) !== null) {
+            localStorage.removeItem(object.place.id);
+        } else {
+            var blobToStore = {
+                type: "places",
+                id: object.place.id,
+                name: object.place.name,
+                picUrl: object.place.picture.data.url
+            };
+            localStorage.setItem(object.place.id, JSON.stringify(blobToStore));
+        }
         $scope.localStoredData = refreshLocalStorage();
     }
     $scope.saveToGroupsStorage = function(object) {
-        var blobToStore = {
-            type: "groups",
-            id: object.group.id,
-            name: object.group.name,
-            picUrl: object.group.picture.data.url
-        };
-        localStorage.setItem(object.group.id, JSON.stringify(blobToStore));
+        if (localStorage.getItem(object.group.id) !== null) {
+            localStorage.removeItem(object.group.id);
+        } else {
+            var blobToStore = {
+                type: "groups",
+                id: object.group.id,
+                name: object.group.name,
+                picUrl: object.group.picture.data.url
+            };
+            localStorage.setItem(object.group.id, JSON.stringify(blobToStore));
+        }
         $scope.localStoredData = refreshLocalStorage();
     }
     $scope.getAllItems = function() {
@@ -531,5 +550,20 @@ app.controller('controlNinja', function($scope, $http) {
         $scope.localStoredData = refreshLocalStorage();
     }
 
-
+    // function to check if the favorited data is already present in localStorage
+    $scope.isIdPresentInUsersStore = function(object) {
+        return localStorage.getItem(object.user.id) === null ? false : true;
+    }
+    $scope.isIdPresentInPagesStore = function(object) {
+        return localStorage.getItem(object.page.id) === null ? false : true;
+    }
+    $scope.isIdPresentInEventsStore = function(object) {
+        return localStorage.getItem(object.event.id) === null ? false : true;
+    }
+    $scope.isIdPresentInPlacesStore = function(object) {
+        return localStorage.getItem(object.place.id) === null ? false : true;
+    }
+    $scope.isIdPresentInGroupsStore = function(object) {
+        return localStorage.getItem(object.group.id) === null ? false : true;
+    }
 });
