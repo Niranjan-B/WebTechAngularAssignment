@@ -620,14 +620,15 @@ app.controller('controlNinja', function($scope, $http) {
     }
 
     $scope.postToFB = function() {
-
         FB.ui({
             app_id:'1679160999051021',
+            display: 'popup',
             method: 'feed',
-            display: 'dialog', 
+            link: window.location.href,
             picture: idDetailHighResImage,
             name: idDetailName,
             caption: "FB SEARCH FROM USC CSCI 571",
+            href: "https://developers.facebook.com/docs/"
         }, function(response){
             if (response && !response.error_message) 
                 alert('Posting completed.');
