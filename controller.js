@@ -624,8 +624,7 @@ app.controller('controlNinja', function($scope, $http) {
         FB.ui({
             app_id:'1679160999051021',
             method: 'feed',
-            display: 'dialog',  
-            link: "https://developers.facebook.com/docs/",
+            display: 'dialog', 
             picture: idDetailHighResImage,
             name: idDetailName,
             caption: "FB SEARCH FROM USC CSCI 571",
