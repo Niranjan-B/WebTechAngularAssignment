@@ -9,6 +9,10 @@ app.controller('controlNinja', function($scope, $http) {
     var idDetailName;
     var idDetailPicURL;
 
+    $scope.hideProgessBar = true;
+    $scope.hideProgressBarAlbums = false;
+    $scope.hideProgressBarPosts = false;
+
     $scope.changeState = function() {
         if ($scope.hideTabContent) {
             $scope.hideTabContent = false;
@@ -57,6 +61,8 @@ app.controller('controlNinja', function($scope, $http) {
     var previousPageUrlGroupsTab;
     
     $scope.submit = function() {
+        $scope.hideProgessBar = false;
+
         if ($scope.hideTabContent) {
             $scope.hideTabContent = false;
             $scope.hideDetailContent = true;
@@ -156,6 +162,8 @@ app.controller('controlNinja', function($scope, $http) {
                  .then(function (response) {
                     $scope.hideGroupsTable = false;
                     $scope.groups = response.data.data;
+
+                    $scope.hideProgessBar = true;
 
                     if (response.data.paging !== undefined  && response.data.paging.next != null) {
                         nextPageUrlGroupsTab = response.data.paging.next;
@@ -423,6 +431,7 @@ app.controller('controlNinja', function($scope, $http) {
 
     // --------------------------------------------------- detail's ----------------------------------------------------
     $scope.showDetailsOfUsers = function(id) {
+
         if (id.user !== undefined) {
             idDetail = id.user.id;
             idDetailType = "users";
@@ -448,6 +457,11 @@ app.controller('controlNinja', function($scope, $http) {
         $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + idDetail, 
                 {headers:{ 'Access-Control-Allow-Origin':'*' }})
                 .then(function(response){
+                    $scope.hideProgressBarAlbums = true;
+                    $scope.hideProgressBarPosts = true;
+                    $scope.albumDetails = null;
+                    $scope.postsDetails = null;
+
                     if (response.data.albums === undefined) {
                         $scope.albumDetails = undefined;    
                     } else {

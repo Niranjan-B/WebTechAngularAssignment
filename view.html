@@ -301,6 +301,11 @@
                 </div>     
             </div>
             
+            <div ng-hide="hideProgessBar" class="progress" style="position:absolute; left:0; right:0; top:0; bottom:0; margin:auto; width:80%;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" 
+                     style="width: 50%;">
+                </div>
+            </div>
             
             <!-- Detail view -->
             <div ng-hide="hideDetailContent" class="row detail-content">
@@ -325,6 +330,11 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Albums</div>
                         <div class="panel-body">
+                            <div ng-hide="hideProgressBarAlbums" class="progress" style="left:0; right:0; top:0; bottom:0; margin:auto; width:80%;">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" 
+                                            style="width: 50%;">
+                                </div>
+                            </div>   
                             <div ng-if="albumDetails !== undefined">
                                 <uib-accordion close-others="true">
                                     <div uib-accordion-group class="panel-default" heading="{{detail.name}}" ng-repeat="detail in albumDetails">
@@ -344,6 +354,11 @@
                     <div class="panel panel-default" style="padding-bottom:1.5em;">
                         <div class="panel-heading">Posts</div>
                         <div class="panel-body">
+                            <div ng-hide="hideProgressBarPosts" class="progress" style="left:0; right:0; top:0; bottom:0; margin:auto; width:80%;">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" 
+                                            style="width: 50%;">
+                                </div>
+                            </div> 
                             <div ng-if="postsDetails !== undefined" ng-repeat="post in postsDetails | orderBy:'created_time':true" ng-if="post.message !== undefined" style="margin-left: 1em; margin-right:1em; margin-top:1em; border: 1px solid lightgrey; border-radius:3px; padding:10px;">
                                 <span>
                                     <img style="width:50px; height:50px" src="{{ pictureUrl }}"/>
