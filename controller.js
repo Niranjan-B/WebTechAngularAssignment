@@ -430,6 +430,8 @@ app.controller('controlNinja', function($scope, $http) {
             idDetail = id.place.id;
         } else if (id.group !== undefined) {
             idDetail = id.group.id;
+        } else if (id.localBlob !== undefined) {
+            idDetail = id.localBlob.id;
         }
         
         swapHiddenViews();
