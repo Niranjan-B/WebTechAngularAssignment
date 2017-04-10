@@ -22,6 +22,8 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.hideProgressBarAlbums = false;
     $scope.hideProgressBarPosts = false;
 
+    $scope.clear = true;
+
     $scope.changeState = function() {
         if ($scope.hideTabContent) {
             $scope.hideTabContent = false;
@@ -71,6 +73,7 @@ app.controller('controlNinja', function($scope, $http) {
     
     $scope.submit = function() {
         $scope.hideProgessBar = false;
+        $scope.clear = true;
 
         if ($scope.hideTabContent) {
             $scope.hideTabContent = false;
@@ -643,5 +646,10 @@ app.controller('controlNinja', function($scope, $http) {
             else 
                 alert('Error while posting.');
         });
-    }  
+    }
+
+    $scope.clearStuff = function() {
+        $scope.query = "";
+        $scope.clear = false;
+    }
 });

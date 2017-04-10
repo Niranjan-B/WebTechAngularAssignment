@@ -61,7 +61,7 @@
                             </div>
                         </form>
                         <div class="col-xs-3 col-sm-3 col-md-3" style="margin-top: 0.5em;">
-                            <button type="button" class="btn btn-default" style="border: 1px solid #337ab5; background: white;" >
+                            <button type="button" class="btn btn-default" style="border: 1px solid #337ab5; background: white;" ng-click="clearStuff()">
                                 <span style="color: #337ab5">Clear</span>
                             </button>
                         </div>
@@ -84,7 +84,7 @@
                 <hr style="border: 1px solid #337ab5; margin-top: 0px;">
             </div>   
             <!-- Tab content here-->
-            <div class="row main-content" ng-hide="hideTabContent">
+            <div ng-if="clear" class="row main-content" ng-hide="hideTabContent">
                 <div class="tab-content">
                     <!-- ///////////////////////////////////// tab for user's /////////////////////////////////////////// -->
                     <div id="user" class="tab-pane active" style="margin-left: 20px; margin-right: 20px;">
@@ -332,7 +332,7 @@
             </div>
             
             <!-- Detail view -->
-            <div ng-hide="hideDetailContent" class="row detail-content">
+            <div ng-if="clear" ng-hide="hideDetailContent" class="row detail-content">
                 <div class="col-xs-2 col-sm-2 col-md-2" >
                     <button class="btn btn-default" style="background: white;" ng-click="goBack()">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="width: 1em; height: 1em; "></span>
