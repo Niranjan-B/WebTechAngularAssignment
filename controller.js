@@ -1,3 +1,11 @@
+var lat;
+var lon;
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+}
+
 var app = angular.module("webApp", ['ngSanitize','ngAnimate','ui.bootstrap']);
 app.controller('controlNinja', function($scope, $http) {
 
@@ -137,7 +145,7 @@ app.controller('controlNinja', function($scope, $http) {
                  }, function (error){
                     console.log(error);
                  });
-            $http.get("https://php-gae-161219.appspot.com/?search_type=places&searched_keyword="+$scope.query ,
+            $http.get("https://php-gae-161219.appspot.com/?search_type=places&searched_keyword="+$scope.query+"&lat="+lat+"&lon"+lon ,
                      { headers: { 'Access-Control-Allow-Origin':'*' } })
                  .then(function (response) {
                     $scope.hidePlacesTable = false;
@@ -635,19 +643,5 @@ app.controller('controlNinja', function($scope, $http) {
             else 
                 alert('Error while posting.');
         });
-
-
-        // FB.ui({
-        //     method: 'feed',
-        //     display: 'iframe',
-        //     link: 'https://developers.facebook.com/docs/',
-        //     caption: 'FB SEARCH FROM USC CSCI571'
-        // }, function(response) {
-        //     if (response && !response.error_message) {
-        //         alert('Posting completed.');
-        //     } else {
-        //         alert('Error while posting.');
-        //     }
-        // });
     }  
 });
