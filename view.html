@@ -363,14 +363,14 @@
                                 <uib-accordion close-others="true">
                                     <div ng-repeat="detail in albumDetails">
                                         <div ng-if="$index == 0" uib-accordion-group class="panel-default" heading="{{detail.name}}" is-open="true">
-                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
+                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" class="img-responsive"/>
                                             <br><br>
-                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" class="img-responsive"/>
                                         </div>
-                                        <div uib-accordion-group class="panel-default" heading="{{detail.name}}">
-                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
+                                        <div ng-if="$index != 0" uib-accordion-group class="panel-default" heading="{{detail.name}}">
+                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" class="img-responsive"/>
                                             <br><br>
-                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" class="img-responsive"/>
                                         </div>
                                     </div>
                                 </uib-accordion>
