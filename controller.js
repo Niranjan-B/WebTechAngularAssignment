@@ -466,6 +466,11 @@ app.controller('controlNinja', function($scope, $http) {
         
         swapHiddenViews();
         
+        idDetailHighResImage = "";
+        idDetailName = "";
+
+
+        
         // make http request
         $http.get("https://php-gae-161219.appspot.com/?search_type=details&searched_keyword=" + idDetail, 
                 {headers:{ 'Access-Control-Allow-Origin':'*' }})
@@ -643,9 +648,9 @@ app.controller('controlNinja', function($scope, $http) {
             href: "https://developers.facebook.com/docs/"
         }, function(response){
             if (response && !response.error_message) 
-                alert('Posting completed.');
+                alert('Posted Successfully');
             else 
-                alert('Error while posting.');
+                alert('Not Posted');
         });
     }
 
