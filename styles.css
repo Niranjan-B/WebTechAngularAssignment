@@ -1,8 +1,5 @@
 #page-header {
-    height: 3.5em;
-    border-bottom: 1px solid lightgray;
-    background: #F3F2F2;
-    width: 100%;
+    background: #f7f7f7;
 }
 
 #fb-search-text {
@@ -10,7 +7,6 @@
 }
 
 #search-fb-button {
-    width: 5em;
     background: #337ab5;
     color: white;
 }
