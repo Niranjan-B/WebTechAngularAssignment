@@ -118,12 +118,12 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="col-xs-3 col-sm-3 col-md-4"> <!-- Dummy div's --></div>
-                            <div class="col-xs-6 col-sm-6 col-md-3">
-                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: left; margin-left: 2em; margin-bottom: 5em;" ng-hide="hidePreviousButtonUsersTab" ng-click="onPreviousButtonClickedUsersPage()">Previous</button>
-                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 7em; height: 2.5em; float: right; margin-right: 2em; margin-bottom: 5em;" ng-hide="hideNextButtonUsersTab" ng-click="onNextButtonClickedUsersPage()" >Next</button>
+                            <div class="col-xs-0 col-sm-0 col-md-4"> <!-- Dummy div's --></div>
+                            <div class="col-xs-12 col-sm-10 col-md-3" style="margin-top:2em;">
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 6em; height: 2.5em; float: left; margin-bottom: 5em;" ng-hide="hidePreviousButtonUsersTab" ng-click="onPreviousButtonClickedUsersPage()">Previous</button>
+                                <button class="btn btn-default align-middle" type="button" style="background: white; width: 6em; height: 2.5em; float: right; margin-bottom: 5em;" ng-hide="hideNextButtonUsersTab" ng-click="onNextButtonClickedUsersPage()" >Next</button>
                             </div>
-                            <div class="col-xs-3 col-sm-3 col-md-5"><!-- Dummy div's' --></div>
+                            <div class="col-xs-0 col-sm-0 col-md-5"><!-- Dummy div's' --></div>
                         </div>
                     </div>
                     <!-- ///////////////////////////////////// tab for page's /////////////////////////////////////////// -->
@@ -339,9 +339,9 @@
                         <span>Back</span>
                     </button>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-8" >
+                <div class="col-xs-4 col-sm-4 col-md-8" >
                 </div>
-                <div class="col-xs-4 col-sm-4 col-md-2" >
+                <div class="col-xs-6 col-sm-6 col-md-2" >
                     <button class="btn btn-default" style="float: right; margin-left: 10px; background: white;" ng-click="postToFB()">
                         <span aria-hidden="true"><img src="facebook.png" style="width: 1.3em; height: 1.3em;"/></span>
                     </button>
@@ -350,7 +350,7 @@
                         <span ng-if="isIdPresentInGeneralStore()" class="glyphicon glyphicon glyphicon-star" aria-hidden="true" style="width: 1em; height: 1em; color:gold;"></span>
                     </button>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:1.5em;">
+                <div class="col-xs-12 col-sm-12 col-md-6" style="margin-top:1.5em;">
                     <div class="panel panel-default">
                         <div class="panel-heading">Albums</div>
                         <div class="panel-body">
@@ -381,7 +381,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:1.5em;">
+                <div class="col-xs-12 col-sm-21 col-md-6" style="margin-top:1.5em;">
                     <div class="panel panel-default" style="padding-bottom:1.5em;">
                         <div class="panel-heading">Posts</div>
                         <div class="panel-body">
