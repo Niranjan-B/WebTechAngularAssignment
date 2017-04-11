@@ -361,10 +361,17 @@
                             </div>   
                             <div ng-if="albumDetails !== undefined">
                                 <uib-accordion close-others="true">
-                                    <div uib-accordion-group class="panel-default" heading="{{detail.name}}" ng-repeat="detail in albumDetails">
-                                        <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
-                                        <br><br>
-                                        <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                    <div ng-repeat="detail in albumDetails">
+                                        <div ng-if="$index == 0" uib-accordion-group class="panel-default" heading="{{detail.name}}" is-open="true">
+                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
+                                            <br><br>
+                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                        </div>
+                                        <div uib-accordion-group class="panel-default" heading="{{detail.name}}">
+                                            <img ng-src="{{detail.photos.data[0].images[0].source}}" style="width:35em; height:25em;"/>
+                                            <br><br>
+                                            <img ng-src="{{detail.photos.data[1].images[0].source}}" style="width:35em; height:25em;"/>
+                                        </div>
                                     </div>
                                 </uib-accordion>
                             </div>
