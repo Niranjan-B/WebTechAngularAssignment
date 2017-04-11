@@ -196,6 +196,7 @@ app.controller('controlNinja', function($scope, $http) {
 
         } else {
             $scope.isTooltipOpen = true;
+            $scope.hideProgessBar = true;
         }
     }
 
@@ -651,5 +652,37 @@ app.controller('controlNinja', function($scope, $http) {
     $scope.clearStuff = function() {
         $scope.query = "";
         $scope.clear = false;
+        $scope.users = "";
+        $scope.pages = "";
+        $scope.events = "";
+        $scope.places = "";
+        $scope.groups = "";
+        
+        $scope.hideUserTable = true;
+        $scope.hidePagesTable = true;
+        $scope.hideEventsTable = true;
+        $scope.hidePlacesTable = true;
+        $scope.hideGroupsTable = true;
+        $scope.hideFavoritesTable = true;
+
+        // variables related to users tab
+        $scope.hideNextButtonUsersTab = true;
+        $scope.hidePreviousButtonUsersTab = true;
+
+        // variables related to pages tab   
+        $scope.hideNextButtonPagesTab = true;
+        $scope.hidePreviousButtonPagesTab = true;
+
+        // variables for events tabs
+        $scope.hideNextButtonEventsTab = true;
+        $scope.hidePreviousButtonEventsTab = true;
+
+        // variables for places tab
+        $scope.hideNextButtonPlacesTab = true;
+        $scope.hidePreviousButtonPlacesTab = true;
+
+        // variables for groups tab
+        $scope.hideNextButtonGroupsTab = true;
+        $scope.hidePreviousButtonGroupsTab = true;
     }
 });
